@@ -7,7 +7,7 @@ const Hero = () => {
       <div className="w-full flex flex-col lg:flex-row items-center max-w-screen-xl mx-auto px-3 gap-4">
         <div className="w-full lg:w-6/12 py-2 order-2 lg:order-1">
           <div className="px-2 lg:px-4 flex flex-col">
-            <span className=" text-gray text-[22px] text-4xl font-semibold pb-1 lg:pb-[10px]">
+            <span className=" text-gray text-[22px] lg:text-4xl font-semibold pb-1 lg:pb-[10px]">
               I am yogesh
             </span>
             <h1 className="text-[30px] lg:text-6xl font-bold text-transparent bg-gradient-to-r from-accent to-gray bg-clip-text pb-1 lg:pb-[15px]  max-w-[550px]">
@@ -19,8 +19,12 @@ const Hero = () => {
             </p>
             <div className="flex flex-col lg:flex-row gap-5 lg:items-center pt-5 lg:pt-[50px]">
               {/* Download Resume Button */}
-              <div className=" flex px-6 py-3 bg-transparent text-[#9D4EDD] hover:text-white border-2 border-[#9D4EDD] rounded-full font-medium hover:bg-[#9D4EDD] transition duration-300">
-                <Link href="/resume" passHref className="flex justify-center items-center">
+              <div className=" flex">
+                <Link
+                  href="/resume"
+                  passHref
+                  className="flex justify-center items-center px-6 py-3 bg-transparent text-[#9D4EDD] hover:text-white border-2 border-[#9D4EDD] rounded-full font-medium hover:bg-[#9D4EDD] transition duration-300"
+                >
                   <span className="pr-4">Download Resume</span>
                   <FaDownload className="text-current" />
                 </Link>

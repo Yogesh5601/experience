@@ -32,7 +32,7 @@ export default function ServiceList() {
   return (
     <div
       id="services"
-      className="max-w-screen-xl mx-auto py-20 px-4 text-center gap-10"
+      className="max-w-screen-xl mx-auto py-20 px-4 text-center text-white gap-10"
     >
       {/* Section Title */}
       <h2 className="text-4xl lg:text-[45px] font-bold text-transparent bg-gradient-to-r from-accent to-gray bg-clip-text mb-2">

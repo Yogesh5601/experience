@@ -8,11 +8,11 @@ interface ProjectItems {
 
 const ProjectCard = ({ item }: { item: ProjectItems }) => {
   return (
-    <div className="relative w-full lg:w-3/12 p-4 bg-[#0f0715] rounded-lg  shadow-[0_0_12px_4px_rgba(0,0,0,0.4)] transition-all ease-in-out duration-500 hover:-translate-y-[10px] hover:shadow-[0_0_50px_4px_rgba(0,0,0,0.6)] filter-[1.1]">
+    <div className="relative text-white w-full lg:w-3/12 p-4 bg-[#0f0715] rounded-lg  shadow-[0_0_12px_4px_rgba(0,0,0,0.4)] transition-all ease-in-out duration-500 hover:-translate-y-[10px] hover:shadow-[0_0_50px_4px_rgba(0,0,0,0.6)] filter-[1.1]">
       {/* Top Icons */}
       <div className="flex justify-start mb-2 space-x-1">
-        <div className="w-3 h-3 bg-gray-500 rounded-full"></div>
-        <div className="w-3 h-3 bg-gray-400 rounded-full"></div>
+        <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+        <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
         <div className="w-3 h-3 bg-red-400 rounded-full"></div>
       </div>
 
