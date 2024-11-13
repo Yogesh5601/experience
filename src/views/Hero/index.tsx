@@ -62,7 +62,7 @@ const Hero = () => {
         </div>
         <div className="w-full lg:w-6/12 flex justify-center order-1 lg:order-2">
           <img
-            src="/images/hero_2.jpg"
+            src="/images/Hero_2.png"
             alt=""
             className="max-w-[300px] lg:max-w-[435px] transform rotate-6 transition-transform duration-500 ease-in-out  border-2 border-accent_dark hover:rotate-0 rounded-[25px] hover:border-2 hover:border-accent"
           />
