@@ -1,8 +1,9 @@
+"use client"
 import React from "react";
 import { LiaGraduationCapSolid } from "react-icons/lia";
 import { GiAchievement } from "react-icons/gi";
 import ResumeCard, { ResumeItem } from "@/components/elements/Cards/ResumeCard";
-
+import { Fade } from "react-awesome-reveal";
 
 
 const Resume = () => {
@@ -36,13 +37,16 @@ const Resume = () => {
             My Experience
           </h1>
         </div>
+
         <div className="w-full flex ">
           <div className="w-full lg:w-10/12 flex flex-col gap-6">
-            {Educations.map(
-              (item: ResumeItem, index: React.Key | null | undefined) => (
-                <ResumeCard key={index} item={item} />
-              )
-            )}
+            <Fade direction="left" delay={400} duration={2000} triggerOnce>
+              {Educations.map(
+                (item: ResumeItem, index: React.Key | null | undefined) => (
+                  <ResumeCard key={index} item={item} />
+                )
+              )}
+            </Fade>
           </div>
         </div>
       </div>
@@ -57,11 +61,13 @@ const Resume = () => {
         </div>
         <div className="w-full flex">
           <div className="w-full lg:w-10/12 flex flex-col gap-6">
-            {Educations.map(
-              (item: ResumeItem, index: React.Key | null | undefined) => (
-                <ResumeCard key={index} item={item} />
-              )
-            )}
+            <Fade direction="right" delay={400} duration={1500} triggerOnce>
+              {Educations.map(
+                (item: ResumeItem, index: React.Key | null | undefined) => (
+                  <ResumeCard key={index} item={item} />
+                )
+              )}
+            </Fade>
           </div>
         </div>
       </div>

@@ -1,6 +1,5 @@
 import React from "react";
 import { FiArrowRight } from "react-icons/fi";
-
 interface Service {
   id: number;
   title: string;
@@ -24,6 +23,7 @@ const ServiceCard = ({
   onMouseLeave,
 }: ServiceCardProps) => {
   return (
+    
     <div
       onClick={onClick}
       onMouseEnter={onMouseEnter}

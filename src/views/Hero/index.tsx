@@ -23,6 +23,7 @@ const Hero = () => {
                 <Link
                   href="/resume"
                   passHref
+                  download
                   className="flex justify-center items-center px-6 py-3 bg-transparent text-[#9D4EDD] hover:text-white border-2 border-[#9D4EDD] rounded-full font-medium hover:bg-[#9D4EDD] transition duration-300"
                 >
                   <span className="pr-4">Download Resume</span>
@@ -33,18 +34,24 @@ const Hero = () => {
               {/* Social Icons */}
               <div className="flex gap-4">
                 <ul className="w-full flex gap-4">
-                  <li className="border-2 border-[#9D4EDD] rounded-full text-[#9D4EDD] hover:text-white hover:bg-[#9D4EDD] p-2 transition duration-300">
-                    <Link href="#">
+                  <li className="border-2 border-[#9D4EDD] rounded-full text-[#9D4EDD] hover:text-white hover:bg-[#9D4EDD] p-2 transition duration-300 cursor-pointer">
+                    <Link
+                      href="https://discord.com/channels/@me"
+                      target="_blank"
+                    >
                       <FaDiscord size={20} />
                     </Link>
                   </li>
-                  <li className="border-2 border-[#9D4EDD] rounded-full text-[#9D4EDD] hover:text-white hover:bg-[#9D4EDD] p-2 transition duration-300">
-                    <Link href="#">
+                  <li className="border-2 border-[#9D4EDD] rounded-full text-[#9D4EDD] hover:text-white hover:bg-[#9D4EDD] p-2 transition duration-300 cursor-pointer">
+                    <Link
+                      href="https://www.linkedin.com/in/yogesh-shrivas-1998aa231/"
+                      target="_blank"
+                    >
                       <FaLinkedin size={20} />
                     </Link>
                   </li>
-                  <li className="border-2 border-[#9D4EDD] rounded-full text-[#9D4EDD] hover:text-white hover:bg-[#9D4EDD] p-2 transition duration-300">
-                    <Link href="#">
+                  <li className="border-2 border-[#9D4EDD] rounded-full text-[#9D4EDD] hover:text-white hover:bg-[#9D4EDD] p-2 transition duration-300 cursor-pointer">
+                    <Link href="https://github.com/Yogesh5601" target="_blank">
                       <FaGithub size={20} />
                     </Link>
                   </li>
@@ -55,7 +62,7 @@ const Hero = () => {
         </div>
         <div className="w-full lg:w-6/12 flex justify-center order-1 lg:order-2">
           <img
-            src="https://gerold.themejunction.net/wp-content/uploads/2024/05/hero_img.jpg"
+            src="/images/hero_2.jpg"
             alt=""
             className="max-w-[300px] lg:max-w-[435px] transform rotate-6 transition-transform duration-500 ease-in-out  border-2 border-accent_dark hover:rotate-0 rounded-[25px] hover:border-2 hover:border-accent"
           />
@@ -67,35 +74,35 @@ const Hero = () => {
 
 export default Hero;
 
-<div className="w-full flex flex-wrap items-center">
-  <div className="w-6/12 py-6">
-    <div className="px-4 flex flex-col">
-      {/* <div className="flex flex-col px-4"> */}
-      <span className="text-[35px] font-semibold pb-[10px]">I am yogesh</span>
-      <h1 className="font-semibold text-[60px] pb-[15px]">
-        Web Developer + UX Designer
-      </h1>
-      <p className="text-xl font-[300] max-w-[550px]">
-        I break down complex user experience problems to create integrity
-        focussed solutions that connect billions of people
-      </p>
-      <div className="flex pt-[50px]">
-        <Link
-          href="/resume"
-          passHref
-          className="px-6 py-3 bg-blue-600 text-white rounded-md font-semibold hover:bg-blue-700"
-        >
-          Download CV
-        </Link>
-      </div>
-      {/* </div> */}
-    </div>
-  </div>
-  <div className="w-6/12 flex justify-center">
-    <img
-      src="https://gerold.themejunction.net/wp-content/uploads/2024/05/hero_img.jpg"
-      alt=""
-      className="max-w-[435px]"
-    />
-  </div>
-</div>;
+// {/* <div className="w-full flex flex-wrap items-center">
+//   <div className="w-6/12 py-6">
+//     <div className="px-4 flex flex-col">
+//       {/* <div className="flex flex-col px-4"> */}
+//       <span className="text-[35px] font-semibold pb-[10px]">I am yogesh</span>
+//       <h1 className="font-semibold text-[60px] pb-[15px]">
+//         Web Developer + UX Designer
+//       </h1>
+//       <p className="text-xl font-[300] max-w-[550px]">
+//         I break down complex user experience problems to create integrity
+//         focussed solutions that connect billions of people
+//       </p>
+//       <div className="flex pt-[50px]">
+//         <Link
+//           href="/resume"
+//           passHref
+//           className="px-6 py-3 bg-blue-600 text-white rounded-md font-semibold hover:bg-blue-700"
+//         >
+//           Download CV
+//         </Link>
+//       </div>
+//       {/* </div> */}
+//     </div>
+//   </div>
+//   <div className="w-6/12 flex justify-center">
+//     <img
+//       src="https://gerold.themejunction.net/wp-content/uploads/2024/05/hero_img.jpg"
+//       alt=""
+//       className="max-w-[435px]"
+//     />
+//   </div>
+// </div>; */}

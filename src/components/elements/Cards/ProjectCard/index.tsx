@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 interface ProjectItems {
   title: string;
   description: string;
@@ -17,11 +19,11 @@ const ProjectCard = ({ item }: { item: ProjectItems }) => {
       </div>
 
       {/* Project Image */}
-      <div className="mb-4">
+      <div className="mb-4 h-[256px]">
         <img
           src={item.imageSrc}
           alt={`${item.title} Image`}
-          className="rounded-lg object-cover w-full h-[256px] bg-black"
+          className="rounded-lg  object-cover w-full h-full bg-black"
         />
       </div>
 
@@ -32,19 +34,23 @@ const ProjectCard = ({ item }: { item: ProjectItems }) => {
       <p className="text-gray-400 text-sm mb-4">{item.description}</p>
 
       {/* Tech Stack */}
-      <p className="text-xs text-gray-300 mb-4 flex gap-1">
+      <div className="text-xs text-gray-300 mb-4 flex gap-1">
         Tech Stack:
         {item.techStacks.map((techStack: string, index: number) => (
           <div key={index} className="flex gap-1">
             {techStack},
           </div>
         ))}
-      </p>
+      </div>
 
       {/* Action Button */}
-      <button className="py-1 px-4 bg-gradient-to-r from-accent_dark to-accent rounded-lg text-sm font-semibold hover:bg-gray-600 transition-colors duration-200 cursor-pointer">
+      <Link
+        href={item.url}
+        target="_blank"
+        className="py-1 px-4 bg-gradient-to-r from-accent_dark to-accent rounded-lg text-sm font-semibold hover:bg-gray-600 transition-colors duration-200 cursor-pointer"
+      >
         See Project
-      </button>
+      </Link>
     </div>
   );
 };
