@@ -51,7 +51,7 @@ export default function ServiceList() {
 
       {/* Services List */}
       <div className="w-full">
-        <Fade cascade direction="up" damping={0.1}  triggerOnce>
+        <Fade cascade direction="up" damping={0.5} triggerOnce>
           {services.map((service) => (
             <ServiceCard
               key={service.id}

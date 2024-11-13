@@ -40,7 +40,7 @@ const Resume = () => {
 
         <div className="w-full flex ">
           <div className="w-full lg:w-10/12 flex flex-col gap-6">
-            <Fade direction="left" delay={400} duration={2000} triggerOnce>
+            <Fade direction="left" delay={400} duration={1500} triggerOnce>
               {Educations.map(
                 (item: ResumeItem, index: React.Key | null | undefined) => (
                   <ResumeCard key={index} item={item} />
