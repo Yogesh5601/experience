@@ -1,10 +1,7 @@
 // components/Footer.js
 import Link from "next/link";
 import {
-  FaFacebookF,
   FaTwitter,
-  FaPinterestP,
-  FaInstagram,
   FaLinkedin,
   FaGithub,
   FaDiscord,
