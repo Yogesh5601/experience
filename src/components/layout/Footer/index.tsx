@@ -5,6 +5,9 @@ import {
   FaTwitter,
   FaPinterestP,
   FaInstagram,
+  FaLinkedin,
+  FaGithub,
+  FaDiscord,
 } from "react-icons/fa";
 
 export default function Footer() {
@@ -13,36 +16,36 @@ export default function Footer() {
       <div className=" text-gray pt-20 p-10 text-center w-full max-w-screen-xl mx-auto">
         <div className="flex justify-center space-x-4 mb-2">
           <Link
-            href="https://facebook.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Facebook"
-          >
-            <FaFacebookF className="hover:text-gray-200" />
-          </Link>
-          <Link
             href="https://twitter.com"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Twitter"
           >
-            <FaTwitter className="hover:text-gray-200" />
+            <FaTwitter className="hover:text-accent text-gray" />
           </Link>
           <Link
-            href="https://pinterest.com"
+            href="https://www.linkedin.com/in/yogesh-shrivas-1998aa231/"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Pinterest"
+            aria-label="Linkedin"
           >
-            <FaPinterestP className="hover:text-gray-200" />
+            <FaLinkedin className="hover:text-accent text-gray" />
           </Link>
           <Link
-            href="https://instagram.com"
+            href="https://discord.com/channels/@me"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Instagram"
+            aria-label="Discord"
           >
-            <FaInstagram className="hover:text-gray-200" />
+            <FaGithub className="hover:text-accent text-gray" />
+          </Link>
+          <Link
+            href="https://discord.com/channels/@me"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Discord"
+          >
+            <FaDiscord className="hover:text-accent text-gray" />
           </Link>
         </div>
         <p className="mb-1">
@@ -51,10 +54,7 @@ export default function Footer() {
             shrivasyogesh2000@gmail.com
           </Link>
         </p>
-        <p>
-          © 2035 by Yogesh shrivas. Powered and secured by non coders
-          
-        </p>
+        <p>© 2035 by Yogesh shrivas. Powered and secured by non coders</p>
       </div>
     </footer>
   );

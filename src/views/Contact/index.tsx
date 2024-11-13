@@ -27,9 +27,9 @@ const ContactUs = () => {
     >
       <div className="w-full order-2 lg:order-1 lg:w-6/12 flex flex-col px-4 py-[30px] lg:p-[50px] gap-6 bg-[#0f0715] rounded-[10px] text-base">
        
-          <div className="w-full">
-            <div className="w-full flex flex-col gap-4">
-              <div className="text-5xl text-800 font-bold text-transparent bg-gradient-to-r from-accent to-gray bg-clip-text">
+          <div className="w-full flex flex-col gap-4">
+            <div className="w-full">
+              <div className="text-5xl text-800 font-bold text-transparent bg-gradient-to-r from-accent to-gray bg-clip-text pb-4">
                 Lets work together!
               </div>
               <p className="text-gray">

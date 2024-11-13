@@ -36,16 +36,20 @@ export default function ServiceList() {
   return (
     <div
       id="services"
-      className="max-w-screen-xl mx-auto py-20 px-4 text-center text-white gap-10"
+      className="max-w-screen-xl mx-auto py-20  lg:py-28 px-4 text-center text-white gap-10"
     >
       {/* Section Title */}
+
       <Fade direction="up" delay={400} duration={1500} triggerOnce>
-        <div className="text-4xl lg:text-[45px] font-bold text-transparent bg-gradient-to-r from-accent to-gray bg-clip-text mb-2">
-          My Quality Services
-        </div>
-        <div className="text-gray-400 mb-10 max-w-lg mx-auto">
-          We put your ideas and wishes in the form of a unique web project that
-          inspires you and your customers.
+        <div className="w-full ">
+          <div className="text-4xl lg:text-[45px] pb-4 font-bold text-transparent bg-gradient-to-r from-accent to-gray bg-clip-text transition-transform duration-500 transform">
+            My Quality Services
+          </div>
+
+          <div className="text-gray mb-10 max-w-lg mx-auto text-base">
+            We put your ideas and wishes in the form of a unique web project
+            that inspires you and your customers.
+          </div>
         </div>
       </Fade>
 

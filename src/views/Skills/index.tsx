@@ -43,10 +43,10 @@ const Skills = () => {
             <div className="text-[45px] font-bold text-transparent bg-gradient-to-r from-accent to-gray bg-clip-text transition-transform duration-500 transform">
               My Skills
             </div>
-            <div className="text-gray text-base font-medium">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt,
-              vero, obcaecati ducimus veritatis consequuntur fugiat
-              necessitatibus.
+            <div className="text-gray mb-10  text-base">
+              User specializes in full-stack development and UX design,
+              proficient in Next.js, TypeScript, JavaScript, Tailwind CSS,
+              Redux, and MongoDB.
             </div>
           </Fade>
         </div>

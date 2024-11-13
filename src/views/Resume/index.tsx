@@ -31,9 +31,10 @@ const Resume = () => {
     >
       {/* my education */}
       <div className="w-full lg:w-6/12 flex flex-col gap-8">
-        <div className="w-full flex gap-4 ">
+        <div className="w-full flex  gap-4 ">
           <GiAchievement size={48} color="#8750f7" />
-          <h1 className="text-4xl lg:text-5xl font-semibold text-transparent bg-gradient-to-r from-accent to-gray bg-clip-text">
+          
+          <h1 className="text-4xl lg:text-[45px] font-bold text-transparent bg-gradient-to-r from-accent to-gray bg-clip-text">
             My Experience
           </h1>
         </div>
@@ -55,7 +56,7 @@ const Resume = () => {
       <div className="w-full lg:w-6/12 flex flex-col gap-8">
         <div className="w-full flex gap-4 ">
           <LiaGraduationCapSolid size={48} color="#8750f7" />
-          <h1 className="text-4xl lg:text-5xl font-semibold text-transparent bg-gradient-to-r from-accent to-gray bg-clip-text">
+          <h1 className="text-4xl lg:text-[45px] font-bold text-transparent bg-gradient-to-r from-accent to-gray bg-clip-text">
             My Education
           </h1>
         </div>

@@ -17,7 +17,7 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: sora;
+  font-family: Argumentum,Lato,Roboto, sora;
 }
 
 @layer utilities {

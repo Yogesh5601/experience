@@ -33,13 +33,13 @@ const Projects = () => {
   ];
 
   return (
-    <div className="py-28 bg-[#0f0715]" id="works">
+    <div className="py-20 lg:py-28 bg-[#0f0715]" id="works">
       <div className="w-full flex flex-col justify-center items-center gap-10 max-w-screen-xl mx-auto px-3">
-        {/* <Fade direction="up" delay={400} duration={1500}> */}
-        <div className="text-4xl lg:[45px] font-bold text-transparent bg-gradient-to-r from-accent to-gray bg-clip-text transition-transform duration-500 transform">
-          My Recent Works
-        </div>
-        {/* </Fade> */}
+        <Fade direction="up" delay={400} duration={1500} triggerOnce>
+          <div className="text-[45px] font-bold text-transparent bg-gradient-to-r from-accent to-gray bg-clip-text transition-transform duration-500 transform">
+            My Recent Work
+          </div>
+        </Fade>
         <Fade direction="left" delay={400} duration={1500} triggerOnce>
           <div className="w-full flex flex-col lg:flex-row flex-wrap justify-center gap-10 px-3">
             {projects?.map((item, index: number) => (
