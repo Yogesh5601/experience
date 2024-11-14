@@ -3,12 +3,11 @@ import { NextRequest, NextResponse } from "next/server"; // Ensure correct impor
 
 export async function POST(req: NextRequest) {
   try {
-    const message = await req.json();
-    console.log(message)
-    const { subject, toEmail, otpText } = message;
+    const messageData = await req.json();
+    const { subject, toEmail, otpText } = messageData;
     if (!subject || !toEmail || !otpText) {
       return NextResponse.json(
-        { message: "Missing required fields." },
+        { success: false, message: "Missing required fields." },
         { status: 400 }
       );
     }
@@ -18,15 +17,15 @@ export async function POST(req: NextRequest) {
 
     // Respond with success message
     return NextResponse.json(
-      { message: "Email sent successfully" },
+      { success: true, message: "Email sent successfully" },
       { status: 200 }
     );
   } catch (err) {
     console.error(err);
     return NextResponse.json(
       {
-        error_code: "server_error",
-        message: "Something went wrong while processing your request.",
+        success: false,
+        message: err || "Something went wrong while processing your request.",
       },
       { status: 500 }
     );

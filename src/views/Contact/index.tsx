@@ -2,19 +2,22 @@
 import React, { useState } from "react";
 import { FiMail, FiPhoneCall } from "react-icons/fi";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { addNotification } from "@/stores/reducers/notificationReducer";
+import { FaSpinner } from "react-icons/fa";
+import CustomNotification from "@/components/elements/CustomNotification";
 
 const ContactUs = () => {
+  const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    message: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [responseMessage, setResponseMessage] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  // const [error, setError] = useState<string | null>(null);
 
   const options = [
     { value: "", label: "— Select an option —", disabled: true, hidden: true },
@@ -31,50 +34,82 @@ const ContactUs = () => {
     closeDropdown();
   };
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+  // const handleInputChange = (
+  //   e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  // ) => {
+  //   const { name, value } = e.target;
+  //   setFormData((prev) => ({ ...prev, [name]: value }));
+  // };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setResponseMessage("");
-
+    setLoading(true);
     if (
-      !formData.firstName ||
-      !formData.lastName ||
-      !formData.email ||
-      !formData.phone ||
-      !formData.message ||
+      !firstName ||
+      !lastName ||
+      !email ||
+      !phone ||
+      !message ||
       !selectedOption
     ) {
-      setResponseMessage("Please fill in all fields.");
-      setIsSubmitting(false);
+      setLoading(false);
+      dispatch(
+        addNotification({
+          id: new Date().valueOf(),
+          message: "Please fill all fields",
+          open: true,
+          severity: "error",
+        })
+      );
       return;
     }
-
     try {
-      const message = {
+      const messageData = {
         subject: selectedOption,
         toEmail: "shrivasyogesh2000@gmail.com",
-        otpText: `Name: ${formData.firstName} ${formData.lastName}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nMessage: ${formData.message}`,
+        otpText: `Name: ${firstName} ${lastName}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`,
       };
-      const response = await axios.post("/api/send-mail", message);
-
-      if (response.data.success) {
-        setResponseMessage("Message sent successfully!");
-        
+      const response = await axios.post("/api/send-mail", messageData);
+      if (response.data.success === true) {
+        dispatch(
+          addNotification({
+            id: new Date().valueOf(),
+            message: response.data.message,
+            open: true,
+            severity: "success",
+          })
+        );
+        setLoading(false);
+        setFirstName("");
+        setLastName("");
+        setEmail("");
+        setPhone("");
+        setSelectedOption("");
+        setMessage("");
       } else {
-        setResponseMessage(response.data.message || "Something went wrong.");
+        dispatch(
+          addNotification({
+            id: new Date().valueOf(),
+            message: response.data.message,
+            open: true,
+            severity: "error",
+          })
+        );
       }
+      setLoading(false);
     } catch (error) {
-      console.log(error)
-      setResponseMessage("Failed to send message." );
+      console.log(error);
+      dispatch(
+        addNotification({
+          id: new Date().valueOf(),
+          message: "Please fill all fields",
+          open: true,
+          severity: "error",
+        })
+      );
+      setLoading(false);
     } finally {
-      setIsSubmitting(false);
+      setLoading(false);
     }
   };
 
@@ -96,14 +131,15 @@ const ContactUs = () => {
           </div>
           <div className="">
             <form>
+              <CustomNotification />
               <div className="w-full flex flex-col gap-4">
                 <div className="w-full flex flex-col lg:flex-row gap-4">
                   <div className="w-full flex">
                     <input
                       type="text"
                       name="firstName"
-                      value={formData.firstName}
-                      onChange={handleInputChange}
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
                       placeholder="First name"
                       className="w-full px-[20px] py-[14px] bg-black text-white rounded-[10px] border border-[#22272c] hover:border-accent outline-none"
                     />
@@ -112,8 +148,8 @@ const ContactUs = () => {
                     <input
                       type="text"
                       name="lastName"
-                      value={formData.lastName}
-                      onChange={handleInputChange}
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
                       placeholder="Last name"
                       className="w-full px-[20px] py-[14px] bg-black text-white rounded-[10px] border border-[#22272c] hover:border-accent outline-none"
                     />
@@ -122,10 +158,10 @@ const ContactUs = () => {
                 <div className="w-full flex flex-col lg:flex-row gap-4">
                   <div className="w-full flex">
                     <input
-                      type="text"
+                      type="email"
                       name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       placeholder="Email address"
                       className="w-full px-[20px] py-[14px] bg-black text-white rounded-[10px] border border-[#22272c] hover:border-accent outline-none"
                     />
@@ -134,8 +170,8 @@ const ContactUs = () => {
                     <input
                       type="text"
                       name="phone"
-                      value={formData.phone}
-                      onChange={handleInputChange}
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
                       placeholder="Phone number"
                       className="w-full px-[20px] py-[14px] bg-black text-white rounded-[10px] border border-[#22272c] hover:border-accent outline-none"
                     />
@@ -208,8 +244,8 @@ const ContactUs = () => {
                 <div className="">
                   <textarea
                     name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
                     rows={5}
                     className="w-full px-[20px] py-[14px] bg-black text-white rounded-[10px] border border-[#22272c] hover:border-accent outline-none"
                   />
@@ -217,18 +253,19 @@ const ContactUs = () => {
                 <div className="w-full flex">
                   <div
                     className="text-white font-semibold rounded-[50px] bg-gradient-to-r from-accent to-accent_dark px-[35px] py-5 cursor-pointer"
-                    // type="submit"
-                    // disabled={isSubmitting}
                     onClick={handleSubmit}
                   >
-                    {isSubmitting ? "Sending..." : "Send Message"}
+                    {loading ? (
+                      <div className="text-white ">
+                        <FaSpinner size={20} className="mr-2 animate-spin" />
+                      </div>
+                    ) : (
+                      "Send Message"
+                    )}
                   </div>
                 </div>
               </div>
             </form>
-            {responseMessage && (
-              <p className="text-white mt-4">{responseMessage}</p>
-            )}
           </div>
         </div>
       </div>

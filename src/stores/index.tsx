@@ -4,8 +4,7 @@ import { thunk } from "redux-thunk";
 import notificationReducer from "./reducers/notificationReducer";
 
 const rootReducer = combineReducers({
-  general: generalReducer,
-  notification: notificationReducer,
+  notifications: notificationReducer,
 });
 
 export const store = configureStore({

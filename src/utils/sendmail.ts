@@ -6,15 +6,6 @@ export async function sendMail(
   otpText: string
 ): Promise<boolean> {
   // Create the transporter
-
-   console.log(
-     "user",
-     process.env.NODEMAILER_EMAIL,
-     "pass",
-     process.env.NODEMAILER_PASS
-   );
-
-   console.log(subject)
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
