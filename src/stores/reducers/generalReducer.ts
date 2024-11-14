@@ -1,20 +1,20 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: {
-  btc: number;
+  welcomeMsg: string;
 } = {
-  btc: 0,
+  welcomeMsg: "Welcome to non coders portfolio how may i help you,",
 };
 
 const generalSlice = createSlice({
   name: "general",
   initialState,
   reducers: {
-    setBtc: (state, action: PayloadAction<number>) => {
-      state.btc = action.payload;
+    setWelcome: (state, action: PayloadAction<string>) => {
+      state.welcomeMsg = action.payload;
     },
   },
 });
 
-export const {setBtc} = generalSlice.actions
+export const {setWelcome} = generalSlice.actions
 export default generalSlice.reducer;

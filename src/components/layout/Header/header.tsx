@@ -7,7 +7,6 @@ const Header = () => {
     { field: "Works", link: "#works" },
     { field: "Resume", link: "#resume" },
     { field: "Skills", link: "#skills" },
-    // { field: "Testimonials", link: "#testimonials" },
     { field: "Contact", link: "#contact" },
   ];
 
