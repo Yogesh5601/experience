@@ -1,9 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { removeNotification } from "@/stores/reducers/notificationReducer";
 import React, { useEffect } from "react";
-import { SnackbarProvider, enqueueSnackbar, useSnackbar } from "notistack";
+import { SnackbarProvider, enqueueSnackbar } from "notistack";
 const CustomNotification = () => {
-  const { closeSnackbar } = useSnackbar();
   const dispatch = useDispatch();
   const notifications = useSelector(
     (state: any) => state.notifications.notifications
