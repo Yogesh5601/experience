@@ -1,16 +1,16 @@
 "use client"
-import { useState, useEffect } from "react";
+import { useState, useEffect, SetStateAction } from "react";
 import { Home, Briefcase, FileText, User, Code } from "lucide-react";
 
 const MobileNav = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [activeSection, setActiveSection] = useState("#");
+  const [activeSection, setActiveSection] = useState("home");
 
   const navItems = [
     { href: "#services", icon: Briefcase, label: "Services" },
     { href: "#works", icon: Code, label: "Works" },
-    { href: "#", icon: Home, label: "Home", isHome: true },
+    { href: "#home", icon: Home, label: "Home", isHome: true },
     { href: "#resume", icon: FileText, label: "Resume" },
     { href: "#skills", icon: User, label: "Skills" },
   ];
@@ -29,9 +29,9 @@ const MobileNav = () => {
     };
 
     const observerCallback = (entries: any[]) => {
-      entries.forEach((entry) => {
+      entries.forEach((entry: { isIntersecting: any; target: { id: SetStateAction<string>; }; }) => {
         if (entry.isIntersecting) {
-          setActiveSection("#" + entry.target.id);
+          setActiveSection(entry.target.id);
         }
       });
     };
@@ -43,10 +43,9 @@ const MobileNav = () => {
 
     // Observe all sections
     navItems.forEach((item) => {
-      if (item.href !== "#") {
-        const element = document.querySelector(item.href);
-        if (element) observer.observe(element);
-      }
+      const sectionId = item.href.replace("#", "");
+      const element = document.getElementById(sectionId);
+      if (element) observer.observe(element);
     });
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -59,9 +58,12 @@ const MobileNav = () => {
 
   const handleClick = (href: string) => (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-    const element = document.querySelector(href);
+    const sectionId = href.replace("#", "");
+    const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
+    } else if (sectionId === "home") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
@@ -72,68 +74,71 @@ const MobileNav = () => {
       }`}
     >
       <div className="flex justify-around items-center h-16 px-2 max-w-lg mx-auto">
-        {navItems.map((item) => (
-          <a
-            key={item.label}
-            href={item.href}
-            onClick={handleClick(item.href)}
-            className={`relative group flex flex-col items-center justify-center ${
-              item.isHome ? "-mt-6" : ""
-            }`}
-          >
-            {item.isHome ? (
-              <div className="relative">
+        {navItems.map((item) => {
+          const sectionId = item.href.replace("#", "");
+          return (
+            <a
+              key={item.label}
+              href={item.href}
+              onClick={handleClick(item.href)}
+              className={`relative group flex flex-col items-center justify-center ${
+                item.isHome ? "-mt-6" : ""
+              }`}
+            >
+              {item.isHome ? (
+                <div className="relative">
+                  <div
+                    className={`absolute -inset-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full blur-md transition-opacity duration-300 ${
+                      activeSection === "home"
+                        ? "opacity-75 group-hover:opacity-100"
+                        : "opacity-0 group-hover:opacity-75"
+                    }`}
+                  />
+                  <div
+                    className={`relative bg-black p-4 rounded-full border transition-colors duration-300 ${
+                      activeSection === "home"
+                        ? "border-purple-500 group-hover:border-purple-400"
+                        : "border-gray-700 group-hover:border-purple-500"
+                    }`}
+                  >
+                    <item.icon
+                      className={`w-6 h-6 transition-colors duration-300 ${
+                        activeSection === "home"
+                          ? "text-purple-500 group-hover:text-purple-400"
+                          : "text-gray-400 group-hover:text-purple-500"
+                      }`}
+                    />
+                  </div>
+                </div>
+              ) : (
                 <div
-                  className={`absolute -inset-3 bg-gradient-to-r from-purple_600 to-pink_600 rounded-full blur-md transition-opacity duration-300 ${
-                    activeSection === "#"
-                      ? "opacity-75 group-hover:opacity-100"
-                      : "opacity-0 group-hover:opacity-75"
-                  }`}
-                />
-                <div
-                  className={`relative bg-black p-4 rounded-full border transition-colors duration-300 ${
-                    activeSection === "#"
-                      ? "border-purple-500 group-hover:border-purple-400"
-                      : "border-gray-700 group-hover:border-purple-500"
+                  className={`p-2 rounded-lg transition-colors duration-300 ${
+                    activeSection === sectionId
+                      ? "bg-gray-800/50"
+                      : "group-hover:bg-gray-800/50"
                   }`}
                 >
                   <item.icon
-                    className={`w-6 h-6 transition-colors duration-300 ${
-                      activeSection === "#"
-                        ? "text-purple-500 group-hover:text-purple-400"
-                        : "text-gray-400 group-hover:text-purple-500"
+                    className={`w-5 h-5 transition-colors duration-300 ${
+                      activeSection === sectionId
+                        ? "text-purple-400"
+                        : "text-gray-400 group-hover:text-purple-400"
                     }`}
                   />
                 </div>
-              </div>
-            ) : (
-              <div
-                className={`p-2 rounded-lg transition-colors duration-300 ${
-                  activeSection === item.href
-                    ? "bg-gray-800/50"
-                    : "group-hover:bg-gray-800/50"
+              )}
+              <span
+                className={`text-xs mt-1 transition-colors duration-300 ${
+                  activeSection === sectionId
+                    ? "text-purple-400"
+                    : "text-gray-400 group-hover:text-purple-400"
                 }`}
               >
-                <item.icon
-                  className={`w-5 h-5 transition-colors duration-300 ${
-                    activeSection === item.href
-                      ? "text-purple-400"
-                      : "text-gray-400 group-hover:text-purple-400"
-                  }`}
-                />
-              </div>
-            )}
-            <span
-              className={`text-xs mt-1 transition-colors duration-300 ${
-                activeSection === item.href
-                  ? "text-purple-400"
-                  : "text-gray-400 group-hover:text-purple-400"
-              }`}
-            >
-              {item.label}
-            </span>
-          </a>
-        ))}
+                {item.label}
+              </span>
+            </a>
+          );
+        })}
       </div>
     </div>
   );
