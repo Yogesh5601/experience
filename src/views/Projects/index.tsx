@@ -27,7 +27,7 @@ const Projects = () => {
         " the ultimate platform to Launch NFT, collections, and tokens.",
       techStacks: ["Next.js", "TypeScript", "Redux", "Tailwind CSS"],
       imageSrc:
-        "https://gerold.themejunction.net/wp-content/uploads/2024/05/portfolio-3-1024x877.jpg",
+        "/images/falcon.jpg",
       url: "https://ordinalnovus.com/",
     },
   ];

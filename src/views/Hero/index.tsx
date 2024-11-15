@@ -3,7 +3,7 @@ import { FaDiscord, FaDownload, FaGithub, FaLinkedin } from "react-icons/fa";
 
 const Hero = () => {
   return (
-    <div className="w-full h-screen py-20 lg:py-20 lg:px-6 bg-[#0f0715]">
+    <div className="w-full py-20 lg:py-20 lg:px-6 bg-[#0f0715]">
       <div className="w-full flex flex-col lg:flex-row items-center max-w-screen-xl mx-auto px-3 gap-4">
         <div className="w-full lg:w-6/12 py-2 order-2 lg:order-1">
           <div className="px-2 lg:px-4 flex flex-col">
