@@ -7,6 +7,8 @@ const customColors = {
   light_gray_25: "rgba(221, 221, 221, 0.25)",
   accent: "#8750f7",
   accent_dark: "#3d0263",
+  purple_600: "#7c3aed",
+  pink_600: "#D946EF",
 };
 
 const config: Config = {

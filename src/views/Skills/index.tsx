@@ -40,10 +40,10 @@ const Skills = () => {
       <div className="max-w-screen-xl mx-auto flex flex-col justify-center items-center gap-10 py-20 lg:py-0">
         <div className="max-w-[600px] flex flex-col gap-4 justify-center items-center text-center">
           <Fade direction="up" delay={400} duration={1500} triggerOnce>
-            <div className="text-[45px] font-bold text-transparent bg-gradient-to-r from-accent to-gray bg-clip-text transition-transform duration-500 transform">
+            <div className="text-4xl lg:text-[45px] font-bold text-transparent bg-gradient-to-r from-accent to-gray bg-clip-text transition-transform duration-500 transform">
               My Skills
             </div>
-            <div className="text-gray mb-10  text-base">
+            <div className="text-gray mb-10 max-w-lg mx-auto text-base">
               User specializes in full-stack development and UX design,
               proficient in Next.js, TypeScript, JavaScript, Tailwind CSS,
               Redux, and MongoDB.

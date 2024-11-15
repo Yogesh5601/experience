@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import MobileView from "./MobileView";
 
 const Header = () => {
   const menu = [
@@ -40,6 +41,9 @@ const Header = () => {
             Hire me
           </Link>
         </div>
+      </div>
+      <div className="md:hidden">
+        <MobileView />
       </div>
     </div>
   );
