@@ -14,7 +14,7 @@ const Projects = () => {
       url: "https://ordinalnovus.com/",
     },
     {
-      title: "Coderixx",
+      title: "Coderixx Labs",
       description:
         "Coderixx empowers businesses with expert blockchain solutions for growth and innovation.",
       techStacks: ["Next.js", "TypeScript", "Tailwind CSS"],
@@ -22,12 +22,20 @@ const Projects = () => {
       url: "https://coderixxlabs.vercel.app/",
     },
     {
-      title: "Falcon",
+      title: "Falcon Launchpad",
       description:
         " the ultimate platform to Launch NFT, collections, and tokens.",
       techStacks: ["Next.js", "TypeScript", "Redux", "Tailwind CSS"],
       imageSrc: "/images/falcon.jpg",
       url: "https://ordinalnovus.com/",
+    },
+    {
+      title: "NSE-MBW",
+      description:
+        "the ultimate platform to Launch NFT, collections, and tokens.",
+      techStacks: ["Next.js", "TypeScript", "Redux", "Tailwind CSS", "Shadcn-ui"],
+      imageSrc: "/images/nse-mbw.png",
+      url: "https://nse-mbw.vercel.app/",
     },
   ];
 
@@ -47,7 +55,7 @@ const Projects = () => {
           </Fade>
         </div>
         <Fade direction="left" delay={400} duration={1500} triggerOnce>
-          <div className="w-full flex flex-col lg:flex-row flex-wrap justify-center gap-10 px-3">
+          <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-10 px-3">
             {projects?.map((item, index: number) => (
               <ProjectCard key={index} item={item} />
             ))}

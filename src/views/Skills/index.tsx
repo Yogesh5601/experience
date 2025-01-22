@@ -4,16 +4,21 @@ import { Fade } from "react-awesome-reveal";
 
 const Skills = () => {
   const skills = [
+    // {
+    //   name: "Figma",
+    //   percentage: 92,
+    //   icon: "https://gerold.themejunction.net/wp-content/uploads/2024/05/figma.png",
+    // },
     {
-      name: "Figma",
-      percentage: 92,
-      icon: "https://gerold.themejunction.net/wp-content/uploads/2024/05/figma.png",
-    },
-    {
-      name: "React",
+      name: "MERN",
       percentage: 89,
-      icon: "https://gerold.themejunction.net/wp-content/uploads/2024/05/react.png",
+      icon: "https://teqnovos.com/wp-content/uploads/2023/05/mern-1.svg",
     },
+    // {
+    //   name: "React",
+    //   percentage: 89,
+    //   icon: "https://gerold.themejunction.net/wp-content/uploads/2024/05/react.png",
+    // },
     {
       name: "Next",
       percentage: 90,
@@ -44,8 +49,8 @@ const Skills = () => {
               My Skills
             </div>
             <div className="text-gray mb-10 max-w-lg mx-auto text-base">
-              User specializes in full-stack development and UX design,
-              proficient in Next.js, TypeScript, JavaScript, Tailwind CSS,
+              User specializes in full-stack development,
+              proficient in React.js, Express.js, Node.js, Next.js, TypeScript, JavaScript, Tailwind CSS,
               Redux, and MongoDB.
             </div>
           </Fade>

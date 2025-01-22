@@ -22,12 +22,12 @@ const services = [
     description:
       "Building responsive, modern websites that combine aesthetic appeal with functionality to captivate your audience.",
   },
-  {
-    id: 4,
-    title: "content Writing",
-    description:
-      "Creating engaging and well-crafted content for websites, blogs, and digital platforms to drive user engagement and enhance brand messaging.",
-  },
+  // {
+  //   id: 4,
+  //   title: "content Writing",
+  //   description:
+  //     "Creating engaging and well-crafted content for websites, blogs, and digital platforms to drive user engagement and enhance brand messaging.",
+  // },
 ];
 
 export default function ServiceList() {
