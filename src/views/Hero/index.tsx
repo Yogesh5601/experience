@@ -20,15 +20,15 @@ const Hero = () => {
             <div className="flex flex-col lg:flex-row gap-5 lg:items-center pt-5 lg:pt-[50px]">
               {/* Download Resume Button */}
               <div className=" flex">
-                <Link
-                  href="/assets/yogeshResume.pdf"
-                  passHref
+                <a
+                  href="/assets/yogesh_resume.pdf"
                   download
                   className="flex justify-center items-center px-6 py-3 bg-transparent text-[#9D4EDD] hover:text-white border-2 border-[#9D4EDD] rounded-full font-medium hover:bg-[#9D4EDD] transition duration-300"
                 >
                   <span className="pr-4">Download Resume</span>
                   <FaDownload className="text-current" />
-                </Link>
+                </a>
+
               </div>
 
               {/* Social Icons */}

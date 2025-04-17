@@ -6,6 +6,7 @@ interface ProjectItems {
   techStacks: string[];
   imageSrc: string;
   url: string;
+  github: string;
 }
 
 const ProjectCard = ({ item }: { item: ProjectItems }) => {
@@ -44,13 +45,22 @@ const ProjectCard = ({ item }: { item: ProjectItems }) => {
       </div>
 
       {/* Action Button */}
-      <Link
-        href={item.url}
-        target="_blank"
-        className="py-1 px-4 bg-gradient-to-r from-accent_dark to-accent rounded-lg text-sm font-semibold hover:bg-gray-600 transition-colors duration-200 cursor-pointer"
-      >
-        See Project
-      </Link>
+      <div className="w-full flex gap-5">
+        <Link
+          href={item.url}
+          target="_blank"
+          className="py-1 px-4 bg-gradient-to-r from-accent_dark to-accent rounded-lg text-sm font-semibold hover:bg-gray-600 transition-colors duration-200 cursor-pointer"
+        >
+          See Project
+        </Link>
+        {item.github === "" ? null : <Link
+          href={item.github === "" ? item.url : item.github}
+          target="_blank"
+          className="py-1 px-4 bg-gradient-to-r from-accent_dark to-accent rounded-lg text-sm font-semibold hover:bg-gray-600 transition-colors duration-200 cursor-pointer"
+        >
+          Github
+        </Link>}
+      </div>
     </div>
   );
 };

@@ -16,7 +16,7 @@ const Header = () => {
       <div className="flex w-full max-w-screen-xl mx-auto items-center justify-between">
         {/* Logo */}
         <div className="text-4xl font-bold">
-          <Link href="/">NonCoder</Link>
+          <Link href="/">Portfolio</Link>
         </div>
 
         {/* Navigation Menu */}
