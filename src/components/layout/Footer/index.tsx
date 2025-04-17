@@ -51,7 +51,7 @@ export default function Footer() {
             shrivasyogesh2000@gmail.com
           </Link>
         </p>
-        <p>© 2035 by Yogesh shrivas. Powered and secured by non coders</p>
+        <p>© 2025 Yogesh Shrivas. Built with passion and precision.</p>
       </div>
     </footer>
   );
