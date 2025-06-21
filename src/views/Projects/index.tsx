@@ -41,15 +41,15 @@ const Projects = () => {
       url: "https://ordinalnovus.com/",
       github: "",
     },
-    {
-      title: "NSE-MBW",
-      description:
-        "the ultimate platform to Launch NFT, collections, and tokens.",
-      techStacks: ["Next.js", "TypeScript", "Redux", "Tailwind CSS", "Shadcn-ui"],
-      imageSrc: "/images/nse-mbw.png",
-      url: "https://nse-mbw.vercel.app/",
-      github: "https://github.com/Yogesh5601/nse-mbw",
-    },
+    // {
+    //   title: "NSE-MBW",
+    //   description:
+    //     "the ultimate platform to Launch NFT, collections, and tokens.",
+    //   techStacks: ["Next.js", "TypeScript", "Redux", "Tailwind CSS", "Shadcn-ui"],
+    //   imageSrc: "/images/nse-mbw.png",
+    //   url: "https://nse-mbw.vercel.app/",
+    //   github: "https://github.com/Yogesh5601/nse-mbw",
+    // },
    
   ];
 
@@ -71,7 +71,7 @@ const Projects = () => {
         <Fade direction="left" delay={400} duration={1500} triggerOnce>
           <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-10 px-3">
             {projects?.map((item, index: number) => (
-              <ProjectCard key={index} item={item} />
+              <ProjectCard key={index} item={item} index={0} />
             ))}
           </div>
         </Fade>

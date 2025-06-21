@@ -1,14 +1,13 @@
 "use client";
 import { Provider } from "react-redux";
 import { store } from "@/stores";
-export default function CustomProvider({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+
+const CustomProvider = ({ children }: { children: React.ReactNode }) => {
   return (
     <Provider store={store}>
         {children}
     </Provider>
   );
-}
+};
+
+export default CustomProvider;
