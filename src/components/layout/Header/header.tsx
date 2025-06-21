@@ -42,9 +42,9 @@ const Header = () => {
           </Link>
         </div>
       </div>
-      <div className="md:hidden">
+      {/* <div className="md:hidden">
         <MobileView />
-      </div>
+      </div> */}
     </div>
   );
 };
