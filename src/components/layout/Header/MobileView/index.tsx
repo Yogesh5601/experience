@@ -7,6 +7,24 @@ const MobileNav = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // Lock scroll when menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.documentElement.style.overflow = "hidden";
+      document.body.style.overflow = "hidden";
+      document.body.style.touchAction = "none";
+    } else {
+      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+    }
+    return () => {
+      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+    };
+  }, [isMenuOpen]);
+
   useEffect(() => {
     const observerOptions = {
       threshold: 0.5,
@@ -60,45 +78,40 @@ const MobileNav = () => {
   return (
     <>
       {/* Mobile Menu Button */}
-      <motion.button
-        className="fixed top-2 right-4 z-50 p-2 bg-accent rounded-full shadow-glow lg:hidden"
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
-        whileTap={{ scale: 0.95 }}
-      >
-        <AnimatePresence mode="wait">
-          {isMenuOpen ? (
-            <motion.div
-              key="close"
-              initial={{ rotate: -90, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              exit={{ rotate: 90, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-            >
-              <X size={24} className="text-white" />
-            </motion.div>
-          ) : (
-            <motion.div
-              key="menu"
-              initial={{ rotate: 90, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              exit={{ rotate: -90, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-            >
-              <Menu size={24} className="text-white" />
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.button>
+      {/* Menu Icon (hamburger) always visible when menu is closed */}
+      {!isMenuOpen && (
+        <motion.button
+          className="fixed top-4 right-4 z-[10001] p-2 bg-accent rounded-full shadow-glow lg:hidden"
+          onClick={() => setIsMenuOpen(true)}
+          whileTap={{ scale: 0.95 }}
+          aria-label="Open menu"
+        >
+          <Menu size={28} className="text-white" />
+        </motion.button>
+      )}
+
+      {/* Cross Icon (close) always visible when menu is open */}
+      {isMenuOpen && (
+        <motion.button
+          className="fixed top-4 right-4 z-[10001] p-2 bg-accent rounded-full shadow-glow lg:hidden"
+          onClick={() => setIsMenuOpen(false)}
+          whileTap={{ scale: 0.95 }}
+          aria-label="Close menu"
+        >
+          <X size={28} className="text-white" />
+        </motion.button>
+      )}
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            className="fixed inset-0 bg-black/80 backdrop-blur-md z-40 lg:hidden"
+            className="fixed inset-0 bg-black z-[9999] lg:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
+            style={{ touchAction: "none" }}
           >
             <motion.div
               className="flex flex-col items-center justify-center h-full space-y-8"
@@ -110,7 +123,6 @@ const MobileNav = () => {
               {navItems.map((item, index) => {
                 const sectionId = item.href.replace("#", "");
                 const isActive = activeSection === sectionId;
-                
                 return (
                   <motion.a
                     key={item.label}
