@@ -79,28 +79,37 @@ const MobileNav = () => {
     <>
       {/* Mobile Menu Button */}
       {/* Menu Icon (hamburger) always visible when menu is closed */}
-      {!isMenuOpen && (
-        <motion.button
-          className="fixed top-4 right-4 z-[10001] p-2 bg-accent rounded-full shadow-glow lg:hidden"
-          onClick={() => setIsMenuOpen(true)}
-          whileTap={{ scale: 0.95 }}
-          aria-label="Open menu"
-        >
-          <Menu size={28} className="text-white" />
-        </motion.button>
-      )}
-
-      {/* Cross Icon (close) always visible when menu is open */}
-      {isMenuOpen && (
-        <motion.button
-          className="fixed top-4 right-4 z-[10001] p-2 bg-accent rounded-full shadow-glow lg:hidden"
-          onClick={() => setIsMenuOpen(false)}
-          whileTap={{ scale: 0.95 }}
-          aria-label="Close menu"
-        >
-          <X size={28} className="text-white" />
-        </motion.button>
-      )}
+      <AnimatePresence mode="wait">
+        {!isMenuOpen ? (
+          <motion.button
+            key="menu"
+            className="fixed top-4 right-4 z-[10001] p-3 bg-accent rounded-full shadow-glow border-2 border-white/30 lg:hidden"
+            onClick={() => setIsMenuOpen(true)}
+            whileTap={{ scale: 0.95 }}
+            aria-label="Open menu"
+            initial={{ rotate: 90, opacity: 0 }}
+            animate={{ rotate: 0, opacity: 1 }}
+            exit={{ rotate: -90, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <Menu size={28} className="text-white" />
+          </motion.button>
+        ) : (
+          <motion.button
+            key="close"
+            className="fixed top-4 right-4 z-[10001] p-3 bg-accent rounded-full shadow-glow border-2 border-white/30 lg:hidden"
+            onClick={() => setIsMenuOpen(false)}
+            whileTap={{ scale: 0.95 }}
+            aria-label="Close menu"
+            initial={{ rotate: -90, opacity: 0 }}
+            animate={{ rotate: 0, opacity: 1 }}
+            exit={{ rotate: 90, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <X size={28} className="text-white" />
+          </motion.button>
+        )}
+      </AnimatePresence>
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
