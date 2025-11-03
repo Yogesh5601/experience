@@ -1,7 +1,7 @@
 "use client"
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Home, Briefcase, FileText, User, Code, X, Menu } from "lucide-react";
+import { Home, Briefcase, FileText, User, Code } from "lucide-react";
 
 const MobileNav = () => {
   const [activeSection, setActiveSection] = useState("home");
