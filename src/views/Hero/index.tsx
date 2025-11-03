@@ -108,16 +108,16 @@ const Hero = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
         >
-          <div className="relative group">
-            {/* Glow Effect */}
-            <div className="absolute -inset-4 bg-gradient-to-r from-accent to-accent-light rounded-3xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
+          <div className="relative group max-w-md lg:max-w-lg">
+            {/* Subtle Glow Effect */}
+            <div className="absolute -inset-2 bg-gradient-to-r from-accent to-accent-light rounded-full blur-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-500"></div>
             
-            {/* Image Container */}
-            <div className="relative overflow-hidden rounded-2xl border-2 border-accent/20 group-hover:border-accent/50 transition-all duration-500">
+            {/* Image Container with minimal border */}
+            <div className="relative rounded-full overflow-hidden aspect-square border border-accent/40 group-hover:border-accent/60 transition-all duration-300 shadow-xl">
               <img
                 src="/images/Hero_2.png"
                 alt="Yogesh Shrivas - Web Developer"
-                className="w-full max-w-md lg:max-w-lg transform rotate-3 group-hover:rotate-0 transition-transform duration-700 ease-out"
+                className="w-full h-full object-cover transform rotate-3 group-hover:rotate-0 transition-transform duration-500 ease-out"
               />
             </div>
           </div>
@@ -126,7 +126,7 @@ const Hero = () => {
 
       {/* Scroll Indicator */}
       <motion.div 
-        className="absolute -bottom-0 hidden md:block left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-0 hidden md:block left-1/2 transform -translate-x-1/2"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 1.2 }}

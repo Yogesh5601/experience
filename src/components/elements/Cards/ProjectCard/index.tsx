@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
+import { Github } from "lucide-react";
 
 interface ProjectItems {
   title: string;
@@ -12,88 +12,84 @@ interface ProjectItems {
 }
 
 const ProjectCard = ({ item, index }: { item: ProjectItems; index: number }) => {
+  const handleCardClick = () => {
+    if (item.url) {
+      window.open(item.url, "_blank", "noopener,noreferrer");
+    }
+  };
+
+  const handleGithubClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+  };
+
   return (
     <motion.div 
-      className="group relative bg-gradient-to-br from-bg-card to-bg-secondary rounded-2xl overflow-hidden border border-gray-800/50 hover:border-accent/50 transition-all duration-500 h-[600px] flex flex-col"
+      className="group relative bg-gradient-to-br from-bg-card via-[#1a1429] to-bg-secondary rounded-3xl overflow-hidden border border-accent/20 hover:border-accent/60 transition-all duration-500 h-[600px] flex flex-col cursor-pointer shadow-xl hover:shadow-2xl hover:shadow-accent/20"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       viewport={{ once: true }}
       whileHover={{ y: -10 }}
+      onClick={handleCardClick}
     >
-      {/* Background Glow */}
-      <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+      {/* Floating GitHub Button in top right corner */}
+      {item.github && item.github !== "" && (
+        <Link
+          href={item.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={handleGithubClick}
+          className="absolute top-5 right-5 z-20 w-12 h-12 flex items-center justify-center glass-effect border border-accent/40 rounded-full text-gray-400 hover:text-white hover:border-accent hover:bg-gradient-to-br hover:from-accent/20 hover:to-accent-light/20 transition-all duration-300 transform hover:scale-110 hover:rotate-6 group-hover:shadow-glow"
+        >
+          <Github size={20} className="group-hover:scale-110 transition-transform duration-300" />
+        </Link>
+      )}
 
-      {/* Top Icons */}
-      <div className="flex justify-start p-4 space-x-2">
-        <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-        <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-        <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+      {/* Mac Window Dots */}
+      <div className="flex justify-start p-5 space-x-2 relative z-10">
+        <div className="w-3 h-3 bg-red-500 rounded-full shadow-lg"></div>
+        <div className="w-3 h-3 bg-yellow-500 rounded-full shadow-lg"></div>
+        <div className="w-3 h-3 bg-green-500 rounded-full shadow-lg"></div>
       </div>
 
-      {/* Project Image */}
-      <div className="relative px-4 mb-6">
-        <div className="relative overflow-hidden rounded-xl h-48">
+      {/* Project Image with Enhanced Effects */}
+      <div className="relative px-5 mb-6">
+        <div className="relative overflow-hidden rounded-2xl h-48 shadow-2xl transition-all duration-500">
           <img
             src={item.imageSrc}
             alt={`${item.title} Preview`}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </div>
       </div>
 
       {/* Content */}
-      <div className="flex-1 flex flex-col px-4 pb-4">
-        {/* Project Title */}
-        <h3 className="text-xl font-bold text-white mb-3 group-hover:text-accent transition-colors duration-300">
+      <div className="flex-1 flex flex-col px-5 pb-5 relative z-10">
+        {/* Project Title with Gradient Effect */}
+        <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-accent group-hover:to-accent-light transition-all duration-300">
           {item.title}
         </h3>
 
         {/* Description */}
-        <p className="text-gray-400 text-sm mb-6 line-clamp-3 leading-relaxed">
+        <p className="text-gray-300 text-sm mb-6 line-clamp-3 leading-relaxed group-hover:text-gray-200 transition-colors duration-300">
           {item.description}
         </p>
 
-        {/* Tech Stack */}
-        <div className="mb-6 flex-1">
-          <div className="text-xs text-gray-500 mb-3 font-medium uppercase tracking-wider">
+        {/* Tech Stack with Enhanced Design */}
+        <div className="flex-1">
+          <div className="text-xs text-accent mb-3 font-semibold uppercase tracking-widest">
             Tech Stack
           </div>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2.5">
             {item.techStacks.map((tech, techIndex) => (
               <span
                 key={techIndex}
-                className="inline-block px-3 py-1 bg-gray-800/50 border border-gray-700/50 rounded-full text-xs text-gray-300 hover:bg-accent/20 hover:border-accent/50 hover:text-accent transition-all duration-300"
+                className="inline-block px-4 py-1.5 glass-effect border border-accent/30 rounded-full text-xs text-gray-300 font-medium hover:bg-gradient-to-r hover:from-accent/20 hover:to-accent-light/20 hover:border-accent hover:text-accent hover:shadow-glow transition-all duration-300 transform hover:scale-105"
               >
                 {tech}
               </span>
             ))}
           </div>
-        </div>
-
-        {/* Action Buttons */}
-        <div className="flex gap-3 mt-auto">
-          <Link
-            href={item.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-1 flex items-center justify-center gap-2 py-3 px-4 bg-gradient-to-r from-accent to-accent-light rounded-lg text-white font-medium hover:shadow-glow transition-all duration-300 transform hover:scale-105"
-          >
-            <ExternalLink size={16} />
-            View Project
-          </Link>
-          
-          {item.github && item.github !== "" && (
-            <Link
-              href={item.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center p-3 border border-gray-700 rounded-lg text-gray-400 hover:text-accent hover:border-accent transition-all duration-300"
-            >
-              <Github size={20} />
-            </Link>
-          )}
         </div>
       </div>
     </motion.div>
