@@ -77,36 +77,38 @@ const MobileNav = () => {
 
   return (
     <>
-      {/* Mobile Menu Button */}
-      {/* Menu Icon (hamburger) always visible when menu is closed */}
+      {/* Mobile Menu Button (with consistent gap) */}
       <AnimatePresence mode="wait">
-        {!isMenuOpen ? (
+        {(
           <motion.button
-            key="menu"
-            className="fixed top-4 right-4 z-[10001] p-3 bg-accent rounded-full shadow-glow border-2 border-white/30 lg:hidden"
-            onClick={() => setIsMenuOpen(true)}
+            key={isMenuOpen ? "close" : "menu"}
+            className="fixed top-4 right-4 z-[10001] p-3 bg-accent rounded-full shadow-glow border-2 border-white/30 lg:hidden flex items-center justify-center"
+            onClick={() => setIsMenuOpen((prev) => !prev)}
             whileTap={{ scale: 0.95 }}
-            aria-label="Open menu"
-            initial={{ rotate: 90, opacity: 0 }}
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            initial={{ rotate: isMenuOpen ? -90 : 90, opacity: 0 }}
             animate={{ rotate: 0, opacity: 1 }}
-            exit={{ rotate: -90, opacity: 0 }}
-            transition={{ duration: 0.2 }}
+            exit={{ rotate: isMenuOpen ? 90 : -90, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            style={{ width: 48, height: 48 }} // ensures outer button is always big and round
           >
-            <Menu size={28} className="text-white" />
-          </motion.button>
-        ) : (
-          <motion.button
-            key="close"
-            className="fixed top-4 right-4 z-[10001] p-3 bg-accent rounded-full shadow-glow border-2 border-white/30 lg:hidden"
-            onClick={() => setIsMenuOpen(false)}
-            whileTap={{ scale: 0.95 }}
-            aria-label="Close menu"
-            initial={{ rotate: -90, opacity: 0 }}
-            animate={{ rotate: 0, opacity: 1 }}
-            exit={{ rotate: 90, opacity: 0 }}
-            transition={{ duration: 0.2 }}
-          >
-            <X size={28} className="text-white" />
+            <span className="flex items-center justify-center" style={{ width:24, height:24 }}>
+              {/* Hamburger */}
+              {!isMenuOpen && (
+                <span className="relative w-6 h-6 flex flex-col items-center justify-center gap-[5px]">
+                  <span style={{height:'2px',background:'#fff',width:'18px',borderRadius:0}}/>
+                  <span style={{height:'2px',background:'#fff',width:'18px',borderRadius:0}}/>
+                  <span style={{height:'2px',background:'#fff',width:'18px',borderRadius:0}}/>
+                </span>
+              )}
+              {/* Cross */}
+              {isMenuOpen && (
+                <span className="relative w-6 h-6 flex items-center justify-center">
+                  <span style={{height:'2px',background:'#fff',width:'20px',position:'absolute',left:2,top:'50%',marginTop:-1,borderRadius:0,transform:'rotate(45deg)'}} />
+                  <span style={{height:'2px',background:'#fff',width:'20px',position:'absolute',left:2,top:'50%',marginTop:-1,borderRadius:0,transform:'rotate(-45deg)'}} />
+                </span>
+              )}
+            </span>
           </motion.button>
         )}
       </AnimatePresence>

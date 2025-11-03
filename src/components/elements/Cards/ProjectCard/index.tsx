@@ -24,7 +24,7 @@ const ProjectCard = ({ item, index }: { item: ProjectItems; index: number }) => 
 
   return (
     <motion.div 
-      className="group relative bg-gradient-to-br from-bg-card via-[#1a1429] to-bg-secondary rounded-3xl overflow-hidden border border-accent/20 hover:border-accent/60 transition-all duration-500 h-[600px] flex flex-col cursor-pointer shadow-xl hover:shadow-2xl hover:shadow-accent/20"
+      className="group relative bg-gradient-to-br from-bg-card via-[#1a1429] to-bg-secondary rounded-3xl overflow-hidden border border-accent/20 hover:border-accent/60 transition-all duration-500 h-[500px] sm:h-[500px] flex flex-col cursor-pointer shadow-xl hover:shadow-2xl hover:shadow-accent/20"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
