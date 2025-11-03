@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-gray-100 to-gray-50 dark:from-bg-primary dark:via-bg-secondary dark:to-bg-primary overflow-hidden">
+    <section className="relative lg:pt-32 lg:pb-12 w-full min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-gray-100 to-gray-50 dark:from-bg-primary dark:via-bg-secondary dark:to-bg-primary overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-20 w-72 h-72 bg-accent/10 rounded-full blur-3xl animate-float"></div>
@@ -108,16 +108,16 @@ const Hero = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
         >
-          <div className="relative group">
-            {/* Glow Effect */}
-            <div className="absolute -inset-4 bg-gradient-to-r from-accent to-accent-light rounded-3xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
+          <div className="relative group max-w-md lg:max-w-lg">
+            {/* Subtle Glow Effect */}
+            <div className="absolute -inset-2 bg-gradient-to-r from-accent to-accent-light rounded-full blur-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-500"></div>
             
-            {/* Image Container */}
-            <div className="relative overflow-hidden rounded-2xl border-2 border-accent/20 group-hover:border-accent/50 transition-all duration-500">
+            {/* Image Container with minimal border */}
+            <div className="relative rounded-full overflow-hidden aspect-square border border-accent/40 group-hover:border-accent/60 transition-all duration-300 shadow-xl">
               <img
                 src="/images/Hero_2.png"
                 alt="Yogesh Shrivas - Web Developer"
-                className="w-full max-w-md lg:max-w-lg transform rotate-3 group-hover:rotate-0 transition-transform duration-700 ease-out"
+                className="w-full h-full object-cover transform rotate-3 group-hover:rotate-0 transition-transform duration-500 ease-out"
               />
             </div>
           </div>
