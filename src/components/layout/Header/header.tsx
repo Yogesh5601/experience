@@ -63,7 +63,7 @@ const Header = () => {
           <div className="text-2xl lg:text-4xl font-bold">
             <Link 
               href="/" 
-              className="text-gradient hover:scale-105 transition-transform duration-300"
+              className="text-gradient hover:scale-105 transition-transform duration-300 focus:outline-none"
             >
               Portfolio
             </Link>
@@ -79,7 +79,7 @@ const Header = () => {
                   href={item.link}
                   className={`relative group text-gray-300 hover:text-white transition-colors duration-300 ${
                     isActive ? 'text-white' : ''
-                  }`}
+                  } focus:outline-none`}
                 >
                   {item.field}
                   <span className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-accent to-accent-light transition-all duration-300 ${
